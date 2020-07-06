@@ -144,6 +144,7 @@ namespace BuildingSurveillanceSystemApplication
                 {
                     if (externalVisitor.InBuilding == false)
                     {
+                        //update local external visitor list item with data from the external visitor object passed in from the observable object
                         externalVisitorListItem.InBuilding = false;
                         externalVisitorListItem.ExitDateTime = externalVisitor.ExitDateTime;
                     }
@@ -217,9 +218,10 @@ namespace BuildingSurveillanceSystemApplication
             }
             else
             {
-                if (externalVisitorListItem.InBuilding == false)
+                if (externalVisitor.InBuilding == false)
                 {
-                    externalVisitorListItem.InBuilding = false;
+                     //update local external visitor list item with data from the external visitor object passed in from the observable object
+                    externalVisitorListItem.InBuilding = false; 
                     externalVisitorListItem.ExitDateTime = externalVisitor.ExitDateTime;
                     
                     Console.WriteLine($"Security notification: Visitor Id({externalVisitor.Id}), FirstName({externalVisitor.FirstName}), LastName({externalVisitor.LastName}), exited the building, DateTime({externalVisitor.ExitDateTime.ToString("dd MMM yyyy hh:mm:ss tt")})");
