@@ -294,11 +294,13 @@ namespace BuildingSurveillanceSystemApplication
         }
         public void BuildingEntryCutOffTimeReached()
         {
-            if (_externalVisitors.Where(e => e.InBuilding == true).ToList().Count == 0)
+            if (_externalVisitors.Any(e => e.InBuilding == true))
             {
-                foreach (var observer in _observers)
-                    observer.OnCompleted();
+                return;
             }
+
+            foreach (var observer in _observers)
+                observer.OnCompleted();
         }
     }
     public static class OutputFormatter
